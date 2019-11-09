@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>MLB Hall of Fame Analysis</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">MLB Hall of Fame</h1>
+            <h2 class="lead">The Baseball Writers Association of America votes on Hall of Fame induction. 
+                Have the voters been correct?
+            </h2>
+            <hr class="my-2">
+            <h2 class='lead'>Using Machine Learning to analyze Major League Baseball's statistics to see if there are players missing from Cooperstown.
+                
+            </h2>
+            <!-- <p class="lead">
+                <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Reset Page</a>
+            </p> -->
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <a class="navbar-brand" href="#"></a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="">Methodology <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Github</a>
+                  </li>
+              </ul>
+              <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form> -->
+            </div>
+          </nav>
+
+    <div class="container-fluid">
+        <h1>Methodology</h1>
+        <p>Special thanks to Sean Lahman for his <a href="http://www.seanlahman.com/baseball-archive/statistics/">Baseball Databank</a>. 
+          I could not have made this project work without it.</p>
+        <p>The purpose of this project was to create a web application that would allow users to choose a Baseball position and output
+          players who should be in the Hall of Fame based on a machine learning model. I used players that were eligible for the hall of fame
+          based on the criteria set up by the Baseball Writers Association. To be considered, players had to play for a least 10 seasons and 
+          have been retired for 5 seasons. I did not consider special circumstances, like the steriod era, and was interested in focusing on 
+          statistics alone for my analysis. I wanted to see what players throughout history were missed for selection into the hall, those who
+          had careers that were good enough by the statistics, but were overlooked by the Baseball Writers Association.
+        </p>
+        <h4>Machine Learning</h4>
+        <p>This dataset was challenging to work with because it was imbalanced. There have been very few players inducted into the Baseball 
+          Hall of Fame when compared to the total number of players who have played the game. Using a standard random forest classifier did not produce 
+          a model that was useful. All it had to do was predict 'No' and it was correct %99 of the time. There are so few baseball players who are in 
+          the Hall of Fame that the model only had to precict a player was not going to be in the hall to be 99% accurate.  I turned to xgboost and 
+          imbalanced-learn as they have built in functionality that helps to mitigate the imbalance in a data set.  With these models I had much better results.
+          After training I decided to run all of the data for players back through the models I created to see if they would properly predict players who were
+          already in the Hall of Fame, the players that were overlooked and players that were not eligible but should be in the Hall.  While this is not a 
+          scientifically rigorous way to use a machine learning algorithm, it was the goal of this project to make this comparison.  
+        </p>
+        <h4>Results</h4>
+        <p>After exploring both the balanced random forest classifier and xgboost, I went with xgboost. It had better scores and more importantly, was able
+          to predict players to be in Cooperstown more effectively.
+        </p>
+        <h4>Areas for Continued Work</h4>
+        <p>For a lifelong baseball fan, this has been a fascinating project. The time that I had to dedicate to this during my coursework was limited. Moving forward
+          I see several areas that I am interested in pursuing more functionality. These include:
+        </p>
+        <ul>
+          <li>Refining the Machine Learning Algorithm</li>
+          <li>Deploying the project</li>
+          <li>Storing the data in a Database and Querying that Database</li>
+          <li>Storing the Machine Learning Algorithm in a separate file and processing data as it is queried</li>
+          <li>Allowing Users to sort the output on the website by specific columns</li>
+        </ul>
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="mlb-hof.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
