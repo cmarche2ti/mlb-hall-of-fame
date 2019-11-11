@@ -44,6 +44,25 @@ def pitchers_hall():
     pitchers_hall_json = pitchers_hall.to_json(orient='records')
     return pitchers_hall_json
 
+@app.route("/metrics/")
+@app.route("/metrics")
+def metrics():
+    hall_metrics = {}
+    pitchers = pd.read_csv("Data/pitchers_predicted.csv")
+    position_player = pd.read_csv('Data/position_players_predicted.csv')
+    eligible_dict = position_player[position_player['eligible_for_hall']=='eligible'].primary_position.value_counts().to_dict()
+    eligible_dict['Pitchers'] = len(pitchers[pitchers['eligible_for_hall']=='eligible'])
+    current_hall_dict = position_player[position_player['inducted']=='Y'].primary_position.value_counts().to_dict() 
+    current_hall_dict['Pitchers'] = len(pitchers[pitchers['inducted']=='Y'])
+    hall_metrics['eligible_for_hall'] = eligible_dict
+    hall_metrics['currently_in_hall'] = current_hall_dict
+    ml_predicted_dict = position_player[position_player['model_predict']=='Y'].primary_position.value_counts().to_dict()
+    ml_predicted_dict['Pitchers'] = len(pitchers[pitchers['model_predict']=='Y'])
+    hall_metrics['model_predicted'] = ml_predicted_dict
+    both_predicted_and_inducted = position_player[(position_player['model_predict']=="Y") & (position_player['inducted']=='Y')].primary_position.value_counts().to_dict()
+    both_predicted_and_inducted['Pitchers'] = len(pitchers[(pitchers['model_predict']=="Y")&(pitchers['inducted']=="Y")])
+    hall_metrics['both_predicted_and_inducted'] = both_predicted_and_inducted
+    return jsonify(hall_metrics)
 
 
 if __name__ == '__main__':
