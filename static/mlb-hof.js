@@ -81,10 +81,7 @@ function populate_player_table(position) {
         var cell = header_row.append("th");
         cell.text(columnMapItem.prettyColLabel);
       });
-      // var num_hall = 0;
       data_position.forEach((player) => {
-        // if (player.yearid != null) { num_hall++; }
-        // console.log(num_hall)
         var row = tbody_position.append("tr");
         columnMap.forEach((columnMapItem) => {
           var value = player[columnMapItem.jsonColName];
@@ -174,9 +171,7 @@ function populate_pitcher_table() {
         var cell = header_row.append("th");
         cell.text(columnMapItem.prettyColLabel);
       });
-      // var num_hall = 0;
       data_pitchers.forEach((player) => {
-        // if (player.yearid != null) {num_hall ++}
         var row = tbody_pitcher.append("tr");
         columnMap.forEach((columnMapItem) => {
           var value = player[columnMapItem.jsonColName];
@@ -301,10 +296,6 @@ function position_select_metrics(position) {
 populate_player_table()
 populate_pitcher_hall_table()
 
-// // Reset Page Button
-// button.on("click", function () {
-//   window.location.reload()
-// });
 
 // Dropdown menu selection of a position
 console.log(d3.selectAll('.dropdown-item').size())
@@ -313,17 +304,12 @@ d3.selectAll('.dropdown-item').on("click", function(){
     console.log(this.innerText)
     var value = this.innerText;
   if(value == "Pitchers"){
-    // d3.select('#position tbody').selectAll('*').remove()
-    // d3.select('#position thead').selectAll('*').remove()
-    // d3.select('#position_table').selectAll('*').remove()
     d3.select('#position').style('display', 'none');
     d3.select('#pitcher').style('display', 'block');
     d3.select('#metrics-position').style('display', 'block');
     d3.select('#default-metrics-pitcher').style('display', 'none')
     populate_pitcher_table();
   } else {
-    
-    // d3.select('#default-metrics-pitcher').selectAll('*').remove()
     d3.select('#position').style('display', 'block');
     d3.select('#metrics-position').style('display', 'block');
     
@@ -331,19 +317,10 @@ d3.selectAll('.dropdown-item').on("click", function(){
     d3.select('#default-metrics-pitcher').style('display', 'none');
     
     if(value == "All Position Players") {
-    // d3.select('#pitcher tbody').selectAll('*').remove()
-    // d3.select('#pitcher thead').selectAll('*').remove()
-    
       populate_player_table('All_Position_Players')
     } else if(value == "Outfield") {
-    // d3.select('#pitcher tbody').selectAll('*').remove()
-    // d3.select('#pitcher thead').selectAll('*').remove()
-      // d3.select('#default-metrics-pitcher').selectAll('*').remove()
       populate_player_table('Out_Field')
     } else {
-    // d3.select('#pitcher tbody').selectAll('*').remove()
-    // d3.select('#pitcher thead').selectAll('*').remove()
-    // d3.select('#default-metrics-pitcher').selectAll('*').remove()
       value = value.replace(" ", "_")
       populate_player_table(value)
     }
