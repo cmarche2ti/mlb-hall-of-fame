@@ -62,8 +62,17 @@ def metrics():
     both_predicted_and_inducted = position_player[(position_player['model_predict']=="Y") & (position_player['inducted']=='Y')].primary_position.value_counts().to_dict()
     both_predicted_and_inducted['Pitchers'] = len(pitchers[(pitchers['model_predict']=="Y")&(pitchers['inducted']=="Y")])
     hall_metrics['both_predicted_and_inducted'] = both_predicted_and_inducted
+    app_eligible = int(position_player[position_player['eligible_for_hall']=='eligible'].playerID.count())
+    app_inducted = int(position_player[position_player['inducted']=='Y'].playerID.count())
+    app_model_predicted = int(position_player[position_player['model_predict']=='Y'].playerID.count())
+    app_both_predicted_and_inducted = int(position_player[(position_player['model_predict']=="Y") & (position_player['inducted']=='Y')].playerID.count())
+    hall_metrics['all_position_players'] = {
+        'eligible': app_eligible,
+        'inducted': app_inducted,
+        'model_predicted': app_model_predicted,
+        'both_predicted_and_inducted': app_both_predicted_and_inducted
+        }
     return jsonify(hall_metrics)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
