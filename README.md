@@ -25,7 +25,10 @@ Areas for Continued Work
 
 For a lifelong baseball fan, this has been a fascinating project. The time that I had to dedicate to this during my coursework was limited. Moving forward I see several areas that I am interested in pursuing more functionality. These include:
 
-Refining the Machine Learning Algorithm
-Storing the data in a Database and Querying that Database
-Storing the Machine Learning Algorithm in a separate file and processing data as it is queried
-Allowing Users to sort the output on the website by specific columns, positions or players
+*Refining the Machine Learning Algorithm
+
+*Storing the data in a Database and Querying that Database
+
+*Storing the Machine Learning Algorithm in a separate file and processing data as it is queried
+
+*Allowing Users to sort the output on the website by specific columns, positions or players
