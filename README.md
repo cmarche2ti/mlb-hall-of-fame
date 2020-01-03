@@ -32,6 +32,7 @@ more importantly, was able to predict players to be in Cooperstown more effectiv
 In the tables below are the classification reports for both Pitchers and Position Players.  The Accuracy of the "No" category for both is very high meaning that the player was not elected to the Hall of Fame and the model predicted "No" as well.  Accuracy for "Yes" is much lower.  This is due to the difficulties with the imbalanced data set.
 
 ![Pitchers-Report](/static/PitchersClassificationReport.png)
+
 ![PositionPlayer-Report](/static/PositionClassificationReport.png)
 
 ### Areas for Continued Work
