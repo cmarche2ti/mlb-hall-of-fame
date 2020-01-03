@@ -33,12 +33,13 @@ In the tables below are the classification reports for both Pitchers and Positio
 
 ![Pitchers-Report](/static/PitchersClassificationReport.png)
 
-![PositionPlayer-Report](/static/PositionClassificationReport.png)
+![PositionPlayer-Report](/static/PositionClassifcationReport.png)
 
 ### Areas for Continued Work
 
 For a lifelong baseball fan, this has been a fascinating project. The time that I had to dedicate to this during my coursework was limited. Moving forward I see several areas that I am interested in pursuing more functionality. These include:
 
+* ~~Deploy Project~~ Completed!
 * Refining the Machine Learning Algorithm
 * Storing the data in a Database and Querying that Database
 * Storing the Machine Learning Algorithm in a separate file and processing data as it is queried
