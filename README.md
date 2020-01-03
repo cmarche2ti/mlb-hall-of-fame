@@ -1,10 +1,20 @@
 # mlb-hall-of-fame
 
-## Methodology
+## Summary
 
 Special thanks to Sean Lahman for his [Baseball Databank](http://www.seanlahman.com/baseball-archive/statistics/). I could not have made this project work without it.
 
 The purpose of this project was to create a web application that would allow users to choose a Baseball position and output players who should be in the Hall of Fame based on a machine learning model. I used players who were eligible for the hall of fame based on the criteria set up by the Baseball Writers Association. To be eligible, players had to play for at least 10 seasons and have been retired for 5 seasons. I did not consider special circumstances, like the steroid era, and focused on statistics alone for my analysis. I wanted to discover which players had careers that were good enough by the statistics, but were overlooked by the Baseball Writers Association.
+
+### Methods Used
+* Python
+* Pandas
+* Machine Learning
+  * Random Forest Classifier - Scikit-Learn
+  * Balanced Random Forest Classifier - Imbalanced Learn
+  * XGBoost
+* Javascript
+* HTML/CSS
 
 ### Machine Learning
 
@@ -20,6 +30,9 @@ After exploring both the balanced random forest classifier and xgboost, I went w
 more importantly, was able to predict players to be in Cooperstown more effectively. For most position players the model predicted players currently in the hall with fairly good accuracy.  Pitchers were the most interesting.  While there are only 83 pitchers currently in Cooperstown my model says that 483 players should be inducted.  That is an increase of 400 pitchers!  While my model is not as accurate as I would like it to be for identifying players already in the hall, based on this data, I believe that the Baseball Writers Association of America have under elected pitchers, more than any other position in Major League Baseball.
 
 In the tables below are the classification reports for both Pitchers and Position Players.  The Accuracy of the "No" category for both is very high meaning that the player was not elected to the Hall of Fame and the model predicted "No" as well.  Accuracy for "Yes" is much lower.  This is due to the difficulties with the imbalanced data set.
+
+![Pitchers-Report](/static/PitchersClassificationReport.png)
+![PositionPlayer-Report](/static/PositionClassificationReport.png)
 
 ### Areas for Continued Work
 
