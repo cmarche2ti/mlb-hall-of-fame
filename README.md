@@ -2,6 +2,8 @@
 
 ## Summary
 
+This project is deployed at https://mlb-hof.herokuapp.com/.
+
 Special thanks to Sean Lahman for his [Baseball Databank](http://www.seanlahman.com/baseball-archive/statistics/). I could not have made this project work without it.
 
 The purpose of this project was to create a web application that would allow users to choose a Baseball position and output players who should be in the Hall of Fame based on a machine learning model. I used players who were eligible for the hall of fame based on the criteria set up by the Baseball Writers Association. To be eligible, players had to play for at least 10 seasons and have been retired for 5 seasons. I did not consider special circumstances, like the steroid era, and focused on statistics alone for my analysis. I wanted to discover which players had careers that were good enough by the statistics, but were overlooked by the Baseball Writers Association.
