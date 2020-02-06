@@ -1,10 +1,13 @@
+// Javascript to place the elements on the webpage
+
+// Select elements on the page by id
 var tbody_position = d3.select("table#position tbody");
 var thead_position = d3.select("table#position thead");
 var tbody_pitcher = d3.select("table#pitcher tbody");
 var thead_pitcher = d3.select("table#pitcher thead");
-
 var button = d3.select("#reset_button");
 
+// Function to populate the position player table
 function populate_player_table(position) {
   d3.select('#position tbody').selectAll('*').remove()
   d3.select('#position thead').selectAll('*').remove()
@@ -73,7 +76,7 @@ function populate_player_table(position) {
       prettyColLabel: 'Predicted'
     })
   }
-  d3.json('/position_players/' + position)
+  d3.json('/position_players/' + position)  // retrieve data from the position player route
     .then(function (data) {
       var data_position = data
       var header_row = thead_position.append("tr");
@@ -95,12 +98,12 @@ function populate_player_table(position) {
     });
 }
 
-
+// Function to populate the pitchers table
 function populate_pitcher_table() {
   d3.select('#pitcher tbody').selectAll('*').remove()
   d3.select('#pitcher thead').selectAll('*').remove()
 
-  d3.json('/pitchers')
+  d3.json('/pitchers')  // retrieve data from the /pitchers route
     .then(function (data) {
       console.log(data)
       var data_pitchers = data
@@ -184,6 +187,7 @@ function populate_pitcher_table() {
     });
 };
 
+// function to populate the hall of fame pitchers table
 function populate_pitcher_hall_table() {
   d3.select('#pitcher tbody').selectAll('*').remove()
   d3.select('#pitcher thead').selectAll('*').remove()
@@ -266,6 +270,7 @@ function populate_pitcher_hall_table() {
     });
 };
 
+// function to display summary of a postition player for a specific position
 function position_select_metrics(position) {
   d3.json('/metrics')
     .then(function(data){

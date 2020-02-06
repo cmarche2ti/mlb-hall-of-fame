@@ -4,14 +4,18 @@ from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
+# Default Route
 @app.route("/")
 def index():
     return render_template('mlb-hall.html')
 
+# Route for methodology page 
 @app.route("/methodology")
+@app.route("/methodology/")
 def methodology():
     return render_template('mlb-hof-methodology.html')
 
+# Route for reading the position players csv file
 @app.route("/position_players")
 @app.route("/position_players/")
 @app.route("/position_players/<position>")
@@ -28,6 +32,7 @@ def position_players(position=None):
     player_json = position_players.to_json(orient='records')
     return player_json
 
+# Route for reading the pitchers csv file
 @app.route("/pitchers")
 @app.route("/pitchers/")
 def pitchers():
@@ -36,6 +41,7 @@ def pitchers():
     pitcher_json = pitchers.to_json(orient='records')
     return pitcher_json
 
+# Route for reading the pitchers hall of fame data
 @app.route("/pitchers_hall")
 @app.route("/pitchers_hall/")
 def pitchers_hall():
@@ -44,6 +50,8 @@ def pitchers_hall():
     pitchers_hall_json = pitchers_hall.to_json(orient='records')
     return pitchers_hall_json
 
+# Route for returning the metrics for position players and pitchers that are displayed
+# when the user chooses a position
 @app.route("/metrics/")
 @app.route("/metrics")
 def metrics():
